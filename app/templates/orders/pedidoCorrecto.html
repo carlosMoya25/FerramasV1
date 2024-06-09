@@ -1,0 +1,30 @@
+{% load cart_tags %}
+<!-- templates/orders/order_success.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pedido Exitoso</title>
+</head>
+<body>
+    <h1>¡Gracias por tu pedido!</h1>
+    <p>El pedido se ha creado correctamente. Aquí están los detalles de tu pedido:</p>
+    <h2>Detalles del Pedido</h2>
+    <p>Pedido ID: {{ order.id }}</p>
+    <h3>Productos</h3>
+    <ul>
+        {% for line in order_lines %}
+            <li>{{ line.product.name }} - Cantidad: {{ line.quantity }} - Precio: {{ line.product.price }} - Subtotal: {{ line.product.price|multiply:line.quantity }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Total: {{ total }}</h3>
+  
+   <form action="{% url 'create_transaction' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="order_id" value="{{ order.id }}">
+        <button type="submit">Pagar</button>
+    </form>
+    
+    <a href="{% url 'listado_productos' %}">Volver al listado de productos</a>
+</body>
+</html>

@@ -1,0 +1,85 @@
+{% comment %}{% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valor del Dólar</title>
+</head>
+<body>
+    <h1>Valor del Dólar:</h1>
+    <p>{{ valor_dolar }}</p>
+    
+</body>
+</html>
+
+
+<!-- templates/bancoCentral/convertidor.html -->
+
+{% comment %}
+{% load cart_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    
+    <h1 class="text-center">Carrito de Compras</h1>
+    <div class="container mt-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="4" class="text-center">Carrito de compras</th>
+                </tr>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio CLP</th>
+                    <th>Precio USD</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if productos_en_dolares %}
+                    {% for producto in productos_en_dolares %}
+                        <tr class="text-center">
+                            <td>{{ producto.name }}</td>
+                            <td>{{ producto.quantity }}</td>
+                            <td>{{ producto.price_clp|floatformat:2 }} CLP</td>
+                            <td>{{ producto.price_usd|floatformat:2 }} USD</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4">
+                            <div class="alert alert-danger text-center">No tienes productos en el carrito</div>
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">Total en CLP</td>
+                    <td colspan="2">{{ total_clp|floatformat:2 }} CLP</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Total en USD</td>
+                    <td colspan="2">{{ total_usd|floatformat:2 }} USD</td>
+                </tr>
+                {% if productos_en_dolares %}
+                    <tr>
+                        <td colspan="4">
+                            <a href="{% url 'process_order' %}" class="btn btn-success">Crear pedido</a>
+                        </td>
+                    </tr>
+                {% endif %}
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>
+
+{% endcomment %}

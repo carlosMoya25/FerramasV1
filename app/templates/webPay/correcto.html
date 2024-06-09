@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Transacción Exitosa</title>
+ </head>
+ <body>
+    <h1>Transacción Exitosa</h1>
+    <p>Orden: {{ data.buy_order }}</p>
+    <p>Monto: {{ data.amount }}</p>
+    <p>Estado: {{ data.status }}</p>
+    
+      <title>Redirección en 3 segundos</title>
+    <script>
+        setTimeout(function() {
+            window.location.href = "http://127.0.0.1:8000/productos/";
+        }, 3000); // 3000 milisegundos = 3 segundos
+    </script>
+    <p>¡Serás redirigido a nuestro sitio web en 3 segundos!</p>
+ 
+ </body>
+</html>

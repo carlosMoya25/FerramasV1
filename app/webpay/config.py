@@ -1,0 +1,23 @@
+
+
+WEBPAY_BASE_URL = "https://webpay3gint.transbank.cl/."
+WEBPAY_COMMERCE_CODE = "597055555532"  # Código de comercio de integración
+WEBPAY_API_KEY = "579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C"  # API Key de integración
+
+
+#WEBPAY_BASE_URL = "https://webpay3gint.transbank.cl/."
+#WEBPAY_API_KEY = "597055555532"  # Código de comercio de integración
+#WEBPAY_SECRET = "579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C"  # API Key de integración
+
+
+
+
+"""TRANSBANK = {
+    'API_KEY': '579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C',
+    'COMMERCE_CODE': 't597055555532',
+    'ENVIRONMENT': 'TEST',# Usar 'PROD' para producción,
+    'BASE_URL': 'https://webpay3g.transbank.cl'
+
+
+
+}"""

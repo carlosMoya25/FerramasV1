@@ -1,0 +1,17 @@
+<!-- templates/orders/guest_order_form.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Información del Pedido</title>
+</head>
+<body>
+    
+    <h1>Información del Pedido</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Realizar Pedido</button>
+    </form>
+</body>
+</html>

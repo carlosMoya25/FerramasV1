@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transacción Fallida</title>
+</head>
+<body>
+    <h1>Transacción Fallida</h1>
+    <p>Lo sentimos, tu transacción falló. Detalles:</p>
+    <pre>{{ response }}</pre>
+
+       <title>Redirección en 3 segundos</title>
+    <script>
+        setTimeout(function() {
+            window.location.href = "http://127.0.0.1:8000/products/";
+        }, 3000); // 3000 milisegundos = 3 segundos
+    </script>
+    <p>¡Serás redirigido a nuestro sitio web en 3 segundos!</p>
+ 
+</body>
+</html>

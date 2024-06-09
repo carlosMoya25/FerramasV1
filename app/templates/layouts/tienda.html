@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} - Ferramas</title>
+
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'imagenes' %}" rel="stylesheet"/>
+     <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Tienda Ferramas</a>
+        
+    
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listado_productos' %}">Tienda</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "order_list"    %}">Mis pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Hola {{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'salir' %}">Cerrar sesión</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'acceder' %}">Acceder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'registro' %}">Registro</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    {% comment %}
+    
+    aqui va el carrucel
+    {% endcomment %}
+    
+    <div id="carouselE1" class="carousel slide" data-bs-ride="carousel" >
+
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="carouselE1"
+                    data-bs-slide-to="0" class="active" aria-current="true"
+                    aria-label="Slide 1"
+            ></button>
+            <button type="button" data-bs-target="carouselE1"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2"
+            ></button>
+            <button type="button" data-bs-target="carouselE1"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3"
+            ></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                
+                <img src="{% static 'imagenes' %}/123.jpg" class="d-block w-100 img-fluid" alt="">
+                <div class="carousel-caption d-flex flex-column justify-content-center align-items-center" style="bottom: 0;">
+                
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="{% static 'imagenes' %}/321.jpg" class="d-block w-100 img-fluid" alt="">
+                <div class="carousel-caption d-flex flex-column justify-content-center align-items-center" style="bottom: 0;">
+                   
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="{% static 'imagenes' %}/987.jpg" class="d-block w-100 img-fluid" alt="">
+                <div class="carousel-caption d-flex flex-column justify-content-center align-items-center" style="bottom: 0;">
+                   
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselE1"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>    
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselE1"
+                data-bs-slide="next"
+        >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+    </div>
+    
+    
+    
+    
+    {% comment %}
+    
+    termina el carrucel
+    {% endcomment %}
+
+    <div class="container mt-3">
+        {% if messages %}
+            <div class="row mt-3 mb-3">
+                <div class="col-12">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </div>
+    <ul>
+        
+    </ul>
+     <section class="banner">
+        <div style="color: #343a40" class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2>Las mejores herramientas las encuentras aquí</h2>
+                    <p>
+                        Explora nuestro completo surtido de herramientas de primera calidad, diseñadas para adaptarse a tus necesidades. Desde herramientas inalámbricas para tareas sencillas hasta 
+                        sierras eléctricas para proyectos más exigentes, tenemos todo lo que requieres. Además, para los profesionales más exigentes, ofrecemos una amplia gama de herramientas de banco, 
+                        como tronzadoras y lijadoras. No nos olvidamos del cuidado de tu jardín, con cortacéspedes y motosierras de alta calidad. En FERREMAS, estamos comprometidos en brindarte las 
+                        mejores soluciones para tus proyectos, ¡descúbrelas todas con nosotros!
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <script src="{% static 'js/jquery-slim.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
