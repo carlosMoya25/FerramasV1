@@ -1,6 +1,6 @@
-# Very basic Ecommerce site with Django
 
-### Partimos de un proyecto con autenticación básico
+
+
 
 Instalar las siguientes dependencias
 ```shell
