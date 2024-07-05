@@ -15,6 +15,7 @@ urlpatterns = [
     path('webpay/', include('webpay.urls')),
     path('inicio/', inicio, name='inicio'),
     path('api/', include('ConsumoApi.urls')),
+    path('cajero/', include('cajero.urls')),
 
 
 
